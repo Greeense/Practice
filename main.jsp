@@ -42,9 +42,6 @@ body {
 	padding-left:40px;
 	width:100%;	
 	display:inline-block;
-	float:left;
-	z-index:1;
-	position:absolute;
 }
 
 #div_subtitle_text {
@@ -54,10 +51,62 @@ body {
 /* 달력 */
 #div_calendar {
 	width:100%;
-	margin :80px auto;
+	margin :0px auto;
 	border: 2px solid #808080;
 	border-radius : 10px;
+	display:block;
 }
+/*달력툴바*/
+#div_calendar_toolbar {
+	margin:50px 20%;
+	width:100%;	
+	display:inline-block;
+}
+#month_button_back {
+	float:left;
+}
+#div_calendar_toolbar_text {
+	float:left;
+	display:inline-block;
+}
+#dropBox-year-item-selected {
+	text-align:center;
+	margin:0;
+	padding:0;
+	width:80px;
+	border: 1px solid gray;
+	border-radius:5px;
+	background-color:#FFFFFF;
+	font-size:30px;
+	float:left;
+}
+#yearText {
+	text-align:center;
+	margin:0;
+	padding:0;
+	width:90px;
+	font-size:30px;
+	float:left;
+}
+#monthText {
+	text-align:center;
+	margin:0;
+	padding:0;
+	width:90px;
+	font-size:30px;
+	float:left;
+}
+#month_button_next {
+	float:left;
+}
+
+#dropBox_year_itemList {
+	float:left;
+}
+.dropBox-year-item {
+	display:none;
+}
+
 #table_calendar_toolbar {
 	width:100%;
 }
@@ -77,6 +126,8 @@ body {
 	border : 1px solid black;
 }
 
+
+
 .Sat {
 	color : #0070C0;
 }
@@ -84,35 +135,6 @@ body {
 	color : #FF0000;	
 }
 
-/* 달력 */
-#dropBox-year {
-	display:inline-block;
-}
-
-#dropBox-year > #dropBox-year-item-selected {
-	text-align:center;
-	margin:0;
-	padding:0;
-	width:90px;
-	border:1px solid gray;
-	border-radius : 5px;
-	background-color : #FFFFFF;
-	float:left;
-}
-#dropBox-year > #dropBox-year-item-selected:hover {
-	background-color : #166C4D;
-	color : #FFFFFF;
-}
-#dropBox-year-itemList {
-	margin:0;
-	padding:0;
-	width:90px;
-	border:1px solid gray;
-	border-radius : 5px;
-	background-color : #FFFFFF;
-	z-index : 99;
-	display:none;
-}
 .dropBox-year-item{
 	width:90px;
 	text-align:center;
@@ -123,6 +145,19 @@ body {
 	background-color : #166C4D;
 	color : #FFFFFF;
 	display:block;
+}
+
+.month_button {
+	width:100px;
+	background-color:#F6F9FA;
+	border: 0px;
+	font-weight:bold;
+	font-size:40px;
+	color:#5F5F5F;
+}
+
+.month_button:hover{
+	color:#166C4D;
 }
 
 .div_btn_day {
@@ -157,35 +192,38 @@ body {
 	
 	<div id="div_subtitle">
 		<div id="dropBox-year">
-			<div id="dropBox-year-item-selected"><%=year %></div>
 			<div id="div_subtitle_text">
-				<span style="color:#5F5F5F; font-weight:bold; font-size:10pt">년, 몇 개의 연차를 쓰실 계획이신가요?&nbsp;</span>
+				<span style="color:#5F5F5F; font-weight:bold; font-size:10pt">몇 개의 연차를 쓰실 계획이신가요?&nbsp;</span>
 			</div>
 			<div class="div_btn_day">
 				<input type="button" class="btn_day" id="1day" name="1day" value="1일"></input>
 				<input type="button" class="btn_day" id="2day" name="2day" value="2일"></input>
 				<input type="button" class="btn_day" id="3day" name="3day" value="3일"></input>
 				<input type="button" class="btn_day" id="4day" name="4day" value="4일"></input>
-			</div>			
-			<ul id="dropBox-year-itemList">
-				<li class="dropBox-year-item"> <%=(year) %> </li>
-				<li class="dropBox-year-item"> <%=(year+1) %> </li>
-				<li class="dropBox-year-item"> <%=(year+2) %> </li>
-				<li class="dropBox-year-item"> <%=(year+3) %> </li>
-				<li class="dropBox-year-item"> <%=(year+4) %> </li>
-			</ul>			
+			</div>	
 		</div>
 	</div>
 	
+	<div id="div_calendar_toolbar">
+		<input type="button" id="month_button_back" class="month_button" value='<'></input>
+		<div id="div_calendar_toolbar_text">
+			<div id="dropBox-year-item-selected"><%=year %></div>
+			<span id="yearText" style="font-size:30px">년</span>
+			<div id="dropBox-year-item-selected"><%=month %></div>
+			<span id="monthText" style="font-size:30px">월</span>
+		</div>
+		<input type="button" id="month_button_next" class="month_button" value=">"></input>
+		<ul id="dropBox-year-itemList">
+			<li class="dropBox-year-item"> <%=(year) %> </li>
+			<li class="dropBox-year-item"> <%=(year+1) %> </li>
+			<li class="dropBox-year-item"> <%=(year+2) %> </li>
+			<li class="dropBox-year-item"> <%=(year+3) %> </li>
+			<li class="dropBox-year-item"> <%=(year+4) %> </li>
+		</ul>		
+		
+	</div>
 	
 	<div id="div_calendar">
-		<table id="table_calendar_toolbar">
-			<tr>
-				<th><input type="button" style="width:100px; background-color:#F6F9FA; border: 0px; font-weight:bold; font-size:20px; color:#5F5F5F;" value="<"></input></th>
-				<th><%=month %>월</th>
-				<th><input type="button" style="width:100px; background-color:#F6F9FA; border: 0px; font-weight:bold; font-size:20px; color : #5F5F5F;" value=">"></input></th>
-			</tr>
-		</table>
 		<table id="table_calendar">
 			<tr>
 				<td class="Mon">MON</td>

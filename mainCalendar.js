@@ -8,6 +8,12 @@ var item = document.querySelectorAll(".dropBox-year-item");
 
 itemListSelected.addEventListener('click',showItemList);
 
+var month_button_back = document.querySelector("#month_button_back");
+var month_button_next = document.querySelector("#month_button_next");
+
+month_button_back.addEventListener('click',month_button_back_click);
+month_button_next.addEventListener('click',month_button_next_click);
+
 
 
 function showItemList() {
@@ -32,4 +38,13 @@ function ItemClick() {
 		}
 		item.addEventListener("click",changeValue);
 	})
+}
+
+function month_button_back_click () {
+	console.log("month_button_back  click");
+	
+}
+function month_button_next_click () {
+	console.log("month_button_next  click");
+	
 }
