@@ -24,8 +24,8 @@
 <style>
 body {
 	background-color : #F6F9FA;
-	width:900px;
-	margin:0 auto;
+	margin:0px auto;
+	width:100%;
 }
 
 /*common */
@@ -69,7 +69,7 @@ body {
 	float:left;
 	display:inline-block;
 }
-#dropBox-year-item-selected {
+.dropBox-year-item-selected {
 	text-align:center;
 	margin:0;
 	padding:0;
@@ -127,11 +127,13 @@ body {
 }
 
 
-
-.Sat {
+.weekday {
+	text-align : center;
+}
+#Sat {
 	color : #0070C0;
 }
-.Sun {
+#Sun {
 	color : #FF0000;	
 }
 
@@ -160,6 +162,14 @@ body {
 	color:#166C4D;
 }
 
+#month_button_back {
+	text-align:center;
+}
+
+#month_button_next {
+	text-align:left;
+}
+
 .div_btn_day {
 	float:left;
 }
@@ -179,7 +189,9 @@ body {
 </style>
 <script>
 
-
+window.onload = function() {
+	drawCalendar();
+}
 </script>
 <script src="mainCalendar.js" defer>
 </script>
@@ -207,9 +219,9 @@ body {
 	<div id="div_calendar_toolbar">
 		<input type="button" id="month_button_back" class="month_button" value='<'></input>
 		<div id="div_calendar_toolbar_text">
-			<div id="dropBox-year-item-selected"><%=year %></div>
+			<div id="yearTextInput" class="dropBox-year-item-selected"><%=year %></div>
 			<span id="yearText" style="font-size:30px">년</span>
-			<div id="dropBox-year-item-selected"><%=month %></div>
+			<div id="monthTextInput" class="dropBox-year-item-selected"><%=month %></div>
 			<span id="monthText" style="font-size:30px">월</span>
 		</div>
 		<input type="button" id="month_button_next" class="month_button" value=">"></input>
@@ -220,19 +232,18 @@ body {
 			<li class="dropBox-year-item"> <%=(year+3) %> </li>
 			<li class="dropBox-year-item"> <%=(year+4) %> </li>
 		</ul>		
-		
 	</div>
 	
 	<div id="div_calendar">
 		<table id="table_calendar">
 			<tr>
-				<td class="Mon">MON</td>
-				<td class="Tue">TUE</td>
-				<td class="Wed">WED</td>
-				<td class="Thu">THU</td>
-				<td class="Fri">FRI</td>
-				<td class="Sat">SAT</td>
-				<td class="Sun">SUN</td>
+				<td class="weekday" id="Mon">MON</td>
+				<td class="weekday" id="Tue">TUE</td>
+				<td class="weekday" id="Wed">WED</td>
+				<td class="weekday" id="Thu">THU</td>
+				<td class="weekday" id="Fri">FRI</td>
+				<td class="weekday" id="Sat">SAT</td>
+				<td class="weekday" id="Sun">SUN</td>
 			</tr>		
 		</table>
 	</div>	
