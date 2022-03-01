@@ -50,11 +50,11 @@ body {
 
 /* 달력 */
 #div_calendar {
-	width:100%;
+	width:1250px;
 	margin :0px auto;
 	border: 2px solid #808080;
 	border-radius : 10px;
-	display:block;
+	display:inline-block;
 }
 /*달력툴바*/
 #div_calendar_toolbar {
@@ -113,22 +113,25 @@ body {
 #table_calendar {
 	width:100%;
 }
-#table_calendar_toolbar>tr>th{
-	padding:15px;
-	font-size:16px;
-	font-weight:bold;
-	text-align:center;
-}
-#table_calendar>tr>td{
-	font-size:16px;
-	font-weight:bold;
-	text-align:center;
-	border : 1px solid black;
-}
 
+
+#calendar_wrap {
+    position: relative;
+    margin: 0 auto;
+}
 
 .weekday {
-	text-align : center;
+	display: inline-block;
+    margin: 0px 50px 0px 50px;
+    padding: 20px;
+}
+.date {
+	display: flex;
+	margin: 0px 50px 0px 50px;
+	padding: 20px;
+    flex-flow: wrap;
+    height: 29px;
+    width: 1250px;
 }
 #Sat {
 	color : #0070C0;
@@ -193,8 +196,8 @@ window.onload = function() {
 	drawCalendar();
 }
 </script>
-<script src="mainCalendar.js" defer>
-</script>
+<script src="jquery-3.6.0.min.js"></script>
+<script src="mainCalendar.js" defer></script>
 <body>
 	<div id="div_title">
 		<p><span style="color:#5F5F5F; font-weight:bold;">어떤 날 쉬면 알차게 쉴 수 있을까요?</span>
@@ -235,17 +238,20 @@ window.onload = function() {
 	</div>
 	
 	<div id="div_calendar">
-		<table id="table_calendar">
-			<tr>
-				<td class="weekday" id="Mon">MON</td>
-				<td class="weekday" id="Tue">TUE</td>
-				<td class="weekday" id="Wed">WED</td>
-				<td class="weekday" id="Thu">THU</td>
-				<td class="weekday" id="Fri">FRI</td>
-				<td class="weekday" id="Sat">SAT</td>
-				<td class="weekday" id="Sun">SUN</td>
-			</tr>		
-		</table>
+		<div id="table_calendar">
+			<div id="calendar_wrap">
+				<div class="weekday" id="Mon">MON</div>
+				<div class="weekday" id="Tue">TUE</div>
+				<div class="weekday" id="Wed">WED</div>
+				<div class="weekday" id="Thu">THU</div>
+				<div class="weekday" id="Fri">FRI</div>
+				<div class="weekday" id="Sat">SAT</div>
+				<div class="weekday" id="Sun">SUN</div>
+			</div>
+			<div class="date">
+			</div>	
+		</div>
+		
 	</div>	
 </body>
 </html>
